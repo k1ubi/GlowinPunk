@@ -7,6 +7,9 @@
 # re-run.
 set -uo pipefail
 
+echo "== Restoring the GNOME show-desktop keybinding (plain Super+D) =="
+gsettings set org.gnome.desktop.wm.keybindings show-desktop "['<Primary><Super>d', '<Primary><Alt>d', '<Super>d']"
+
 echo "== Restoring gsettings =="
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-olive-dark'
 gsettings set org.gnome.desktop.interface icon-theme 'Yaru-olive'
@@ -57,6 +60,10 @@ rm -f "$HOME/.config/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
 echo "== Removing kitty config (kitty had none before the rice) =="
 rm -f "$HOME/.config/kitty/kitty.conf"
 rmdir "$HOME/.config/kitty" 2>/dev/null
+
+echo "== Removing tmux config (tmux had none before the rice) =="
+rm -f "$HOME/.config/tmux/tmux.conf"
+rmdir "$HOME/.config/tmux" 2>/dev/null
 
 echo "== Removing the Nerd Font pack =="
 rm -f "$HOME"/.local/share/fonts/JetBrainsMono*NerdFont*.ttf

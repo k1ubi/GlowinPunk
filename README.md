@@ -72,7 +72,7 @@ nothing gets added to that palette in a shade that doesn't already glow.
 | Window borders | Rounded Window Corners Reborn | Per-app neon border via `custom-rounded-corner-settings`, keyed by `wm_class_instance` |
 | Panel effects | Blur My Shell | Blurred/tinted panel, dock, overview |
 | System monitor | Astra Monitor | Recolored to the palette, GPU indicator left *disabled* — unreliable readings on this driver/GPU combo |
-| Terminal | gnome-terminal + kitty | Both carry the full 16-color neon ANSI palette |
+| Terminal | gnome-terminal + kitty + tmux | Full 16-color neon ANSI palette; kitty auto-starts tmux, see below |
 | Font | JetBrainsMono Nerd Font Mono | Glyph-safe monospace variant for prompt icons |
 
 30 GNOME Shell extensions in total — see `restore_script.sh` for the full
@@ -104,6 +104,40 @@ New software gets the cyan default automatically. Add an app by editing
 > The extension's shadow color is hardcoded upstream — flat neon borders
 > are the stable ceiling here without a deeper, riskier patch.
 
+## 🖮 Terminal: kitty + tmux
+
+kitty and gnome-terminal both carry the full 16-color neon ANSI palette, but
+kitty is the daily driver and auto-starts tmux — every new kitty window is
+already a tmux session, no manual `tmux` needed (`shell tmux new-session` in
+`config/kitty/kitty.conf`).
+
+tmux itself (`config/tmux/tmux.conf`) is set up for kitty specifically:
+`tmux-256color` + `terminal-overrides ",*:Tc"` for real 24-bit color, mouse
+support, a 50k-line scrollback, low escape-time for responsive vim/neovim,
+and a status bar/pane-border recolor using the same palette as the rest of
+the desktop instead of tmux's default green-on-black.
+
+Splits are reachable two ways:
+
+| Action | Full prefix | 60%-keyboard shortcut |
+|---|---|---|
+| Split horizontally (side by side) | `Ctrl-b` then `\|` | `Win+B` |
+| Split vertically (stacked) | `Ctrl-b` then `-` | `Win+R` |
+| Close current pane, no confirm | `Ctrl-b` then `X` | `Win+D` |
+
+The `Win+*` shortcuts exist for keyboards without easy access to the
+prefix combo. They're implemented entirely on the kitty side — kitty maps
+`super+b`/`super+r`/`super+d` to literally *type* the real tmux prefix byte
+(`Ctrl-b`, `0x02`) followed by the bound key, so tmux never needs to know
+about a "Super" modifier (it has no such concept in its key-binding syntax).
+`Win+D` targets a dedicated `bind X kill-pane` with no confirmation dialog,
+kept separate from the default `prefix+x` (which still asks first) for safe
+manual use.
+
+One GNOME-level conflict had to be cleared for this to work: `Super+D` was
+already bound globally to `show-desktop`. That binding now only fires as
+`Ctrl+Super+D` or `Ctrl+Alt+D` — plain `Super+D` was freed for tmux.
+
 ## 📦 Install
 
 This repo isn't a one-shot installer — it's the reference config plus a full
@@ -116,8 +150,17 @@ the shopping list for Extension Manager.
 ```bash
 # dotfiles
 cp config/kitty/kitty.conf       ~/.config/kitty/kitty.conf
+cp config/tmux/tmux.conf         ~/.config/tmux/tmux.conf
 cp config/gtk-4.0/gtk.css        ~/.config/gtk-4.0/gtk.css
 cp config/gtk-4.0/gtk-dark.css   ~/.config/gtk-4.0/gtk-dark.css
+```
+
+If you want the `Win+B`/`Win+R`/`Win+D` shortcuts too, also free `Super+D`
+from `show-desktop` (only needed if that binding exists on your system):
+
+```bash
+gsettings set org.gnome.desktop.wm.keybindings show-desktop \
+  "['<Primary><Super>d', '<Primary><Alt>d']"
 ```
 
 ## ⏮ Restore
