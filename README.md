@@ -30,7 +30,7 @@ room.**
 [![Shell](https://img.shields.io/badge/GNOME-46-00F0FF?style=for-the-badge&logo=gnome&logoColor=black&labelColor=0A0A12)](https://www.gnome.org/)
 [![Distro](https://img.shields.io/badge/Ubuntu-24.04-FF2E97?style=for-the-badge&logo=ubuntu&logoColor=black&labelColor=0A0A12)](https://ubuntu.com/)
 [![Vibe](https://img.shields.io/badge/vibe-cyberpunk-BD00FF?style=for-the-badge&labelColor=0A0A12)](#)
-[![Private](https://img.shields.io/badge/repo-private-05FFA1?style=for-the-badge&labelColor=0A0A12)](#)
+[![Public](https://img.shields.io/badge/repo-public-05FFA1?style=for-the-badge&labelColor=0A0A12)](#)
 
 </div>
 
@@ -38,12 +38,10 @@ room.**
 
 ## ⚡ What this is
 
-A from-scratch GNOME shell rice built for an arm64 NVIDIA DGX Spark box
-(Ubuntu 24.04 / GNOME 46), styled entirely inside GNOME's own extension and
-theming stack — no Hyprland, no wlroots, no custom compositor. That path was
-evaluated and ruled out: this SoC's NVIDIA driver ships with
-`nvidia-drm.modeset=0` forced by the vendor image, and GNOME/X11 was already
-stable, so the rice works *with* GNOME instead of replacing it.
+A GNOME shell rice — neon-on-black, glass panels, everything styled entirely
+inside GNOME's own extension and theming stack. No Hyprland, no wlroots, no
+custom compositor, just GNOME 46 (Ubuntu 24.04) pushed as far as gsettings
+and the extension ecosystem allow.
 
 No two colors on this desktop are an accident. Every accent — panel, dock,
 terminal, per-app window border — pulls from one fixed neon palette, and
@@ -59,7 +57,7 @@ nothing gets added to that palette in a shade that doesn't already glow.
 | ![#05FFA1](https://placehold.co/18x18/05FFA1/05FFA1.png) Green | `#05FFA1` | kitty border + kitty ANSI green |
 | ![#F9F871](https://placehold.co/18x18/F9F871/F9F871.png) Yellow | `#F9F871` | VS Code border |
 | ![#FF6A00](https://placehold.co/18x18/FF6A00/FF6A00.png) Orange | `#FF6A00` | Files (Nautilus) border |
-| ![#FF2E63](https://placehold.co/18x18/FF2E63/FF2E63.png) Red | `#FF2E63` | DGX Dashboard border |
+| ![#FF2E63](https://placehold.co/18x18/FF2E63/FF2E63.png) Red | `#FF2E63` | free — reserved for a 7th pinned app |
 | ![#0A0A12](https://placehold.co/18x18/0A0A12/0A0A12.png) Near-black | `#0A0A12` | every background |
 
 ## 🧩 Stack
@@ -67,13 +65,13 @@ nothing gets added to that palette in a shade that doesn't already glow.
 | Layer | Choice | Why |
 |---|---|---|
 | GTK / Shell theme | `Yaru-magenta-dark` | Ships with Ubuntu, guaranteed GNOME 46-safe, closest built-in neon accent |
-| Icons | [Suru++](https://github.com/gusbemacbe/suru-plus) | Explicitly cyberpunk-branded, 5300+ app icons — actually covers Obsidian/VS Code/NVIDIA tooling, unlike most "neon" packs |
+| Icons | [Suru++](https://github.com/gusbemacbe/suru-plus) | Explicitly cyberpunk-branded, 5300+ app icons — actually covers apps like Obsidian and VS Code, unlike most "neon" packs |
 | Cursor | [Cyberpunk-Neon](https://github.com/ayushkrsingh/cyberpunk-neon-cursors) | Purpose-built neon cursor, native X11/Wayland support |
 | Libadwaita overrides | hand-written `gtk.css` | Gradience-style `@define-color` overrides for GTK4 app windows |
 | Dock | Ubuntu Dock (`dash-to-dock`) | Bottom, always-visible, translucent, recolored running-indicators |
 | Window borders | Rounded Window Corners Reborn | Per-app neon border via `custom-rounded-corner-settings`, keyed by `wm_class_instance` |
 | Panel effects | Blur My Shell | Blurred/tinted panel, dock, overview |
-| System monitor | Astra Monitor | Recolored to the palette, GPU indicator *disabled* — this SoC's driver doesn't expose GPU stats in a format it can parse |
+| System monitor | Astra Monitor | Recolored to the palette, GPU indicator left *disabled* — unreliable readings on this driver/GPU combo |
 | Terminal | gnome-terminal + kitty | Both carry the full 16-color neon ANSI palette |
 | Font | JetBrainsMono Nerd Font Mono | Glyph-safe monospace variant for prompt icons |
 
@@ -92,7 +90,6 @@ gnome-terminal-server      → cyan
 kitty                      → green
 VS Code (code)             → yellow
 Nautilus (org.gnome.*)     → orange
-DGX Dashboard              → red
 anything else              → cyan (global default)
 ```
 
@@ -134,15 +131,6 @@ uninstalls all 28 added extensions, removes the added icon/cursor themes and
 font, and deletes the added config files. Asks before removing the two
 installed packages (Extension Manager, Gradience). Originally built and
 tested against a live dconf snapshot taken before the rice was applied.
-
-## 🖥 Hardware note
-
-Built on an **NVIDIA DGX Spark** (GB10, aarch64, unified CPU/GPU memory) —
-not a normal desktop GPU. If you're on the same hardware: `nvidia-drm.modeset`
-is forced to `0` by `/etc/modprobe.d/zz-nvidia-drm-override.conf` in the
-vendor image, on top of the driver's own default of `1`. That's why this
-rice stays on X11/GNOME instead of a wlroots compositor, and why GPU
-monitoring extensions don't work out of the box.
 
 ---
 
