@@ -50,6 +50,7 @@ done
 
 echo "== Removing added cursor/icon themes =="
 rm -rf "$HOME/.icons/Cyberpunk-Neon"
+rm -rf "$HOME/.local/share/icons/Cyberpunk-Neon"
 rm -rf "$HOME/.icons/Tela"* "$HOME/.local/share/icons/Tela"*
 rm -rf "$HOME/.local/share/icons/Vimix"*
 rm -rf "$HOME/.local/share/icons/Suru++"*

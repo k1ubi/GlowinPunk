@@ -69,7 +69,7 @@ nothing gets added to that palette in a shade that doesn't already glow.
 | Layer | Choice | Why |
 |---|---|---|
 | GTK / Shell theme | `Yaru-magenta-dark` | Ships with Ubuntu, guaranteed GNOME 46-safe, closest built-in neon accent |
-| Icons | [Suru++](https://github.com/gusbemacbe/suru-plus) | Explicitly cyberpunk-branded, 5300+ app icons — actually covers apps like Obsidian and VS Code, unlike most "neon" packs |
+| Icons | Cyberpunk-Neon | Matches the cursor exactly — coherent neon visual language across the full icon + cursor pair |
 | Cursor | [Cyberpunk-Neon](https://github.com/ayushkrsingh/cyberpunk-neon-cursors) | Purpose-built neon cursor, native X11/Wayland support |
 | Libadwaita overrides | hand-written `gtk.css` | Gradience-style `@define-color` overrides for GTK4 app windows |
 | Dock | Ubuntu Dock (`dash-to-dock`) | Bottom, always-visible, translucent, recolored running-indicators |
