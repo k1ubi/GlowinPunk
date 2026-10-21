@@ -48,6 +48,15 @@ for uuid in blur-my-shell@aunetx rounded-window-corners@fxgn \
     rm -rf "$HOME/.local/share/gnome-shell/extensions/$uuid"
 done
 
+echo "== Clearing leftover extension dconf settings =="
+for schema_dir in arcmenu astra-monitor blur-my-shell caffeine \
+    clipboard-indicator coverflowalttab HideItems \
+    rounded-window-corners-reborn search-light \
+    top-bar-organizer useless-gaps; do
+    dconf reset -f "/org/gnome/shell/extensions/$schema_dir/"
+done
+gsettings reset org.gnome.shell disabled-extensions
+
 echo "== Removing added cursor/icon themes =="
 rm -rf "$HOME/.icons/Cyberpunk-Neon"
 rm -rf "$HOME/.local/share/icons/Cyberpunk-Neon"
