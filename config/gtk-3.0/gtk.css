@@ -1,0 +1,12 @@
+/* NVIDIA green selection override for GTK3 apps (incl. snap Firefox) */
+@define-color theme_selected_bg_color #76b900;
+@define-color theme_selected_fg_color #0a0a12;
+
+*:selected {
+    background-color: #76b900;
+    color: #0a0a12;
+}
+
+selection {
+    background-color: #76b900;
+}

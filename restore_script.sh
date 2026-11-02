@@ -66,6 +66,7 @@ rm -rf "$HOME/.local/share/icons/Suru++"*
 
 echo "== Removing Gradience/libadwaita neon overrides =="
 rm -f "$HOME/.config/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/gtk-dark.css"
+rm -f "$HOME/.config/gtk-3.0/gtk.css"
 
 echo "== Removing kitty config (kitty had none before the rice) =="
 rm -f "$HOME/.config/kitty/kitty.conf"
