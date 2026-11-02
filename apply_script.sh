@@ -54,6 +54,16 @@ python3 "$REPO/set_dock_glow.py"
 echo "== Rounded window borders (NVIDIA green, 3px) =="
 python3 "$REPO/set_borders.py"
 
+echo "== Useless-gaps (no gap when maximized; 6px for tiled/floating) =="
+_UG_SCHEMA="org.gnome.shell.extensions.useless-gaps"
+_UG_DIR="$HOME/.local/share/gnome-shell/extensions/useless-gaps@pimsnel.com/schemas"
+if [ -d "$_UG_DIR" ]; then
+    gsettings --schemadir "$_UG_DIR" set "$_UG_SCHEMA" no-gap-when-maximized true
+    gsettings --schemadir "$_UG_DIR" set "$_UG_SCHEMA" gap-size 6
+else
+    echo "  useless-gaps not installed — skipping"
+fi
+
 echo
 echo "Done. Reload GNOME Shell (Alt+F2 → r) or log out/in for all changes to take effect."
 echo "To reload kitty config: Ctrl+Shift+F5 inside kitty."

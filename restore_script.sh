@@ -48,6 +48,13 @@ for uuid in blur-my-shell@aunetx rounded-window-corners@fxgn \
     rm -rf "$HOME/.local/share/gnome-shell/extensions/$uuid"
 done
 
+echo "== Restoring useless-gaps defaults =="
+_UG_DIR="$HOME/.local/share/gnome-shell/extensions/useless-gaps@pimsnel.com/schemas"
+if [ -d "$_UG_DIR" ]; then
+    gsettings --schemadir "$_UG_DIR" reset org.gnome.shell.extensions.useless-gaps no-gap-when-maximized
+    gsettings --schemadir "$_UG_DIR" reset org.gnome.shell.extensions.useless-gaps gap-size
+fi
+
 echo "== Clearing leftover extension dconf settings =="
 for schema_dir in arcmenu astra-monitor blur-my-shell caffeine \
     clipboard-indicator coverflowalttab HideItems \
