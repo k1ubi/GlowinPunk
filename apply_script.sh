@@ -39,6 +39,10 @@ cp "$REPO/config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 echo "== tmux =="
 mkdir -p "$HOME/.config/tmux"
 cp "$REPO/config/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+# ~/.tmux.conf takes priority over XDG path — keep it as a forwarder
+echo 'source-file ~/.config/tmux/tmux.conf' > "$HOME/.tmux.conf"
+# Reload any running tmux sessions
+tmux source-file "$HOME/.tmux.conf" 2>/dev/null || true
 
 echo "== neofetch =="
 mkdir -p "$HOME/.config/neofetch"
