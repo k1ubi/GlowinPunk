@@ -25,6 +25,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock custom-theme-running-dots-
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position                    'BOTTOM'
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height                    false
 gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size               48
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide                         false
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide                      false
 
 echo "== libadwaita / GTK overrides =="
 mkdir -p "$HOME/.config/gtk-4.0" "$HOME/.config/gtk-3.0"
@@ -48,10 +50,33 @@ echo "== neofetch =="
 mkdir -p "$HOME/.config/neofetch"
 cp "$REPO/config/neofetch/config.conf" "$HOME/.config/neofetch/config.conf"
 
+echo "== Enable GlowinPunk extensions =="
+for uuid in \
+    blur-my-shell@aunetx \
+    rounded-window-corners@fxgn \
+    search-light@icedman.github.com \
+    arcmenu@arcmenu.com \
+    caffeine@patapon.info \
+    clipboard-indicator@tudmotu.com \
+    CoverflowAltTab@palatis.blogspot.com \
+    monitor@astraext.github.io \
+    Hide_Activities@shay.shayel.org \
+    HideItems@fablevi.github.io \
+    impatience@gfxmonk.net \
+    no-overview@fthx \
+    osd-volume-number@deminder \
+    top-bar-organizer@julian.gse.jsts.xyz \
+    useless-gaps@pimsnel.com \
+    AlphabeticalAppGrid@stuarthayhurst \
+    logomenu@aryan_k \
+    bluetooth-quick-connect@bjarosze.gmail.com; do
+    gnome-extensions enable "$uuid" 2>/dev/null && echo "  enabled $uuid" || echo "  skipped $uuid (not installed)"
+done
+
 echo "== Blur-my-shell dock glow (requires Python3 + gi) =="
 python3 "$REPO/set_dock_glow.py"
 
-echo "== Rounded window borders (NVIDIA green, 3px) =="
+echo "== Rounded window borders (NVIDIA green, 3px, visible when maximized) =="
 python3 "$REPO/set_borders.py"
 
 echo "== Useless-gaps (no gap when maximized; 6px for tiled/floating) =="
