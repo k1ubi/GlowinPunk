@@ -50,28 +50,9 @@ echo "== neofetch =="
 mkdir -p "$HOME/.config/neofetch"
 cp "$REPO/config/neofetch/config.conf" "$HOME/.config/neofetch/config.conf"
 
-echo "== Enable GlowinPunk extensions =="
-for uuid in \
-    blur-my-shell@aunetx \
-    rounded-window-corners@fxgn \
-    CoverflowAltTab@palatis.blogspot.com \
-    monitor@astraext.github.io \
-    HideItems@fablevi.github.io \
-    impatience@gfxmonk.net \
-    no-overview@fthx \
-    osd-volume-number@deminder \
-    top-bar-organizer@julian.gse.jsts.xyz \
-    useless-gaps@pimsnel.com \
-    AlphabeticalAppGrid@stuarthayhurst \
-    bluetooth-quick-connect@bjarosze.gmail.com; do
-    gnome-extensions enable "$uuid" 2>/dev/null && echo "  enabled $uuid" || echo "  skipped $uuid (not installed)"
-done
-# Explicitly keep these disabled (removed from rice)
-for uuid in arcmenu@arcmenu.com search-light@icedman.github.com \
-            logomenu@aryan_k Hide_Activities@shay.shayel.org \
-            caffeine@patapon.info clipboard-indicator@tudmotu.com; do
-    gnome-extensions disable "$uuid" 2>/dev/null || true
-done
+echo "== Extensions: restore original DGX set only =="
+gsettings set org.gnome.shell enabled-extensions \
+  "['user-theme@gnome-shell-extensions.gcampax.github.com', 'ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'ubuntu-appindicators@ubuntu.com']"
 
 echo "== Blur-my-shell dock glow (requires Python3 + gi) =="
 python3 "$REPO/set_dock_glow.py"
