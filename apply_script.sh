@@ -6,7 +6,7 @@ REPO="$(cd "$(dirname "$0")" && pwd)"
 
 echo "== GNOME settings =="
 gsettings set org.gnome.desktop.interface gtk-theme         'Yaru-magenta-dark'
-gsettings set org.gnome.desktop.interface icon-theme        'Cyberpunk-Neon'
+gsettings set org.gnome.desktop.interface icon-theme        'Yaru-nvidia-dark'
 gsettings set org.gnome.desktop.interface cursor-theme      'Cyberpunk-Neon'
 gsettings set org.gnome.desktop.interface color-scheme      'prefer-dark'
 gsettings set org.gnome.desktop.interface font-name         'JetBrainsMono Nerd Font Mono 11'
@@ -54,13 +54,8 @@ echo "== Enable GlowinPunk extensions =="
 for uuid in \
     blur-my-shell@aunetx \
     rounded-window-corners@fxgn \
-    search-light@icedman.github.com \
-    arcmenu@arcmenu.com \
-    caffeine@patapon.info \
-    clipboard-indicator@tudmotu.com \
     CoverflowAltTab@palatis.blogspot.com \
     monitor@astraext.github.io \
-    Hide_Activities@shay.shayel.org \
     HideItems@fablevi.github.io \
     impatience@gfxmonk.net \
     no-overview@fthx \
@@ -68,9 +63,14 @@ for uuid in \
     top-bar-organizer@julian.gse.jsts.xyz \
     useless-gaps@pimsnel.com \
     AlphabeticalAppGrid@stuarthayhurst \
-    logomenu@aryan_k \
     bluetooth-quick-connect@bjarosze.gmail.com; do
     gnome-extensions enable "$uuid" 2>/dev/null && echo "  enabled $uuid" || echo "  skipped $uuid (not installed)"
+done
+# Explicitly keep these disabled (removed from rice)
+for uuid in arcmenu@arcmenu.com search-light@icedman.github.com \
+            logomenu@aryan_k Hide_Activities@shay.shayel.org \
+            caffeine@patapon.info clipboard-indicator@tudmotu.com; do
+    gnome-extensions disable "$uuid" 2>/dev/null || true
 done
 
 echo "== Blur-my-shell dock glow (requires Python3 + gi) =="
