@@ -13,6 +13,10 @@ gsettings set org.gnome.desktop.interface font-name         'JetBrainsMono Nerd 
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font Mono 11'
 gsettings set org.gnome.shell.extensions.user-theme name    'NV-Yaru'
 gsettings set org.gnome.shell disable-user-extensions       false
+gsettings set org.gnome.desktop.interface clock-show-date    true
+gsettings set org.gnome.desktop.interface clock-show-weekday true
+# Clear any top-bar-organizer leftovers that can displace the clock
+dconf reset -f /org/gnome/shell/extensions/top-bar-organizer/
 
 echo "== Ubuntu Dock (dash-to-dock) =="
 gsettings set org.gnome.shell.extensions.dash-to-dock custom-background-color          true
