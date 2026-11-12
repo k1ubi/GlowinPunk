@@ -50,9 +50,9 @@ echo "== neofetch =="
 mkdir -p "$HOME/.config/neofetch"
 cp "$REPO/config/neofetch/config.conf" "$HOME/.config/neofetch/config.conf"
 
-echo "== Extensions: restore original DGX set only =="
+echo "== Extensions: original DGX set + glow effects =="
 gsettings set org.gnome.shell enabled-extensions \
-  "['user-theme@gnome-shell-extensions.gcampax.github.com', 'ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'ubuntu-appindicators@ubuntu.com']"
+  "['user-theme@gnome-shell-extensions.gcampax.github.com', 'ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'ubuntu-appindicators@ubuntu.com', 'rounded-window-corners@fxgn', 'blur-my-shell@aunetx']"
 
 echo "== Blur-my-shell dock glow (requires Python3 + gi) =="
 python3 "$REPO/set_dock_glow.py"
