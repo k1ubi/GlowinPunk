@@ -73,6 +73,17 @@ window-padding-y = 10
 window-padding-balance = true
 macos-titlebar-style = transparent
 
+# App icon (Dock / Cmd+Tab): cyberpunk ninja cat (red headband with a >_ plate,
+# glowing cyan eyes, neon skyline). Earlier versions are kept next to it:
+# Ghostty-oni.icns, Ghostty-aggro.icns, Ghostty-redteam.icns, Ghostty-neon.icns.
+# Loaded from Ghostty's default custom-icon path, ~/.config/ghostty/Ghostty.icns
+# (config/ghostty/install.sh puts it there). Source art and the other designs
+# live in config/ghostty/icon/ of the GlowinPunk repo.
+# Fallback if the file is missing: macos-icon = custom-style with
+# macos-icon-frame = plastic, macos-icon-ghost-color = #39ff14,
+# macos-icon-screen-color = #05070d,#0b1a2e
+macos-icon = custom
+
 # Dim inactive splits a little so the active pane stands out
 unfocused-split-opacity = 0.8
 unfocused-split-fill = #05070d

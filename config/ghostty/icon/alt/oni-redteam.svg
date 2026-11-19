@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#060203"/>
+      <stop offset="1" stop-color="#1c050a"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="50%" cy="52%" r="48%">
+      <stop offset="0" stop-color="#ff1744" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#ff1744" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e0610"/>
+      <stop offset="1" stop-color="#0c0204"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="tile"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+  </defs>
+
+  <!-- icon tile (macOS squircle-ish with transparent margin) -->
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <g clip-path="url(#tile)">
+    <rect x="100" y="100" width="824" height="824" fill="url(#aura)"/>
+    <!-- faint scanlines -->
+    <g stroke="#ffffff" stroke-opacity="0.025" stroke-width="3">
+      <path d="M100 160H924M100 220H924M100 280H924M100 340H924M100 400H924M100 460H924M100 520H924M100 580H924M100 640H924M100 700H924M100 760H924M100 820H924M100 880H924"/>
+    </g>
+  </g>
+  <rect x="112" y="112" width="800" height="800" rx="173" fill="none" stroke="#ff1744" stroke-width="6" filter="url(#softglow)" opacity="0.9"/>
+
+  <!-- targeting reticle -->
+  <g fill="none" stroke="#ff1744" stroke-linecap="round" opacity="0.38" filter="url(#softglow)" clip-path="url(#tile)">
+    <circle cx="512" cy="560" r="335" stroke-width="5" stroke-dasharray="6 14"/>
+    <circle cx="512" cy="560" r="288" stroke-width="3"/>
+    <path d="M512 205V250M512 870V915M157 560H202M822 560H867" stroke-width="8"/>
+  </g>
+
+  <!-- horns -->
+  <g filter="url(#glow)" fill="#240610" stroke="#ff1744" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M356 380 C338 310 346 238 372 170 C418 214 450 282 456 350 Z"/>
+    <path d="M668 380 C686 310 678 238 652 170 C606 214 574 282 568 350 Z"/>
+  </g>
+  <g stroke="#ff1744" stroke-width="9" stroke-linecap="round" fill="none" filter="url(#softglow)" opacity="0.95">
+    <path d="M356 300 L410 318"/><path d="M366 252 L414 268"/>
+    <path d="M668 300 L614 318"/><path d="M658 252 L610 268"/>
+  </g>
+
+  <!-- chromatic glitch edge -->
+  <path transform="translate(-11,3)" fill="none" stroke="#2ff3ff" stroke-width="7" opacity="0.6"
+        d="M512 330 C400 326 300 390 282 500 C270 580 290 650 330 710 L390 792 L450 834 L574 834 L634 792 L694 710 C734 650 754 580 742 500 C724 390 624 326 512 330 Z"/>
+
+  <!-- face -->
+  <g filter="url(#glow)">
+    <path d="M512 330 C400 326 300 390 282 500 C270 580 290 650 330 710 L390 792 L450 834 L574 834 L634 792 L694 710 C734 650 754 580 742 500 C724 390 624 326 512 330 Z"
+          fill="url(#face)" stroke="#ff1744" stroke-width="14" stroke-linejoin="round"/>
+  </g>
+
+  <!-- forehead mark -->
+  <path d="M512 372 L534 410 L512 448 L490 410 Z" fill="#2ff3ff" filter="url(#glow)"/>
+
+  <!-- brows -->
+  <g filter="url(#glow)" stroke="#ff1744" stroke-width="26" stroke-linecap="round">
+    <path d="M340 478 L492 546"/>
+    <path d="M684 478 L532 546"/>
+  </g>
+
+  <!-- eyes -->
+  <g filter="url(#glow)">
+    <path d="M372 572 L480 584 L452 626 L388 618 Z" fill="#2ff3ff"/>
+    <path d="M652 572 L544 584 L572 626 L636 618 Z" fill="#2ff3ff"/>
+  </g>
+  <g fill="#0b0f1a">
+    <path d="M432 580 L442 580 L440 622 L432 622 Z"/>
+    <path d="M592 580 L582 580 L584 622 L592 622 Z"/>
+  </g>
+
+  <!-- nostrils -->
+  <g stroke="#ff1744" stroke-width="12" stroke-linecap="round" fill="none" filter="url(#softglow)">
+    <path d="M486 662 Q 500 676 512 664"/>
+    <path d="M538 662 Q 524 676 512 664"/>
+  </g>
+
+  <!-- mouth -->
+  <path d="M352 704 Q 512 776 672 704 Q 650 812 512 826 Q 374 812 352 704 Z" fill="#060203" stroke="#ff1744" stroke-width="10" stroke-linejoin="round" filter="url(#softglow)"/>
+  <!-- upper fangs -->
+  <g fill="#eaf6ff" filter="url(#softglow)">
+    <path d="M424 726 L444 734 L436 772 Z"/>
+    <path d="M472 744 L494 748 L484 786 Z"/>
+    <path d="M530 748 L552 744 L542 786 Z"/>
+    <path d="M580 734 L600 726 L588 772 Z"/>
+  </g>
+  <!-- tongue glow -->
+  <path d="M470 812 Q 512 790 554 812 Q 512 824 470 812 Z" fill="#ff1744" opacity="0.8"/>
+  <!-- tusks -->
+  <g fill="#eaf6ff" stroke="#2ff3ff" stroke-width="6" stroke-linejoin="round" filter="url(#softglow)">
+    <path d="M392 778 C 380 730 372 690 380 640 C 410 668 436 706 440 748 Z"/>
+    <path d="M632 778 C 644 730 652 690 644 640 C 614 668 588 706 584 748 Z"/>
+  </g>
+
+  <!-- cheek marks -->
+  <g stroke="#2ff3ff" stroke-width="9" stroke-linecap="round" filter="url(#softglow)" fill="none">
+    <path d="M312 600 L356 616"/><path d="M308 636 L350 648"/>
+    <path d="M712 600 L668 616"/><path d="M716 636 L674 648"/>
+  </g>
+</svg>

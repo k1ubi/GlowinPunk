@@ -11,7 +11,9 @@ rendering text below AA.
 bash config/ghostty/install.sh
 ```
 
-Copies `config.ghostty` and `shaders/` to:
+Copies `config.ghostty` and `shaders/` to the paths below. On macOS it also
+installs the app icon to `~/.config/ghostty/Ghostty.icns` (Ghostty's default
+custom-icon location):
 
 | OS | Path |
 |---|---|
@@ -29,8 +31,27 @@ Existing configs are backed up first. Reload with `Cmd+Shift+,` (macOS) or
   feature is disabled, otherwise Ghostty forces a bar cursor at the prompt.
 - **Text:** JetBrains Mono (Ghostty's bundled default), 13pt, slight extra
   line height and letter spacing to tell `O/0` and `l/1/I` apart.
+- **Icon:** custom ninja-cat app icon (see below).
 - **Glass:** 0.94 background opacity + blur. Set `background-opacity = 1` for
   screen sharing.
+
+## App icon (`icon/`)
+
+A cyberpunk ninja cat for the Dock / Cmd+Tab (macOS, `macos-icon = custom`):
+black cat with glowing cyan eyes, a red headband whose plate shows a `>_`
+prompt, a ninja mask, a red moon and a neon skyline, in the same red + cyan
+palette. It only changes the Dock and app switcher; Finder keeps the original.
+
+| Path | What |
+|---|---|
+| `icon/Ghostty.icns` | The installed icon |
+| `icon/ninja-cat.svg` | Source art |
+| `icon/build-ninja-cat.py` | Generates `ninja-cat.svg` (`python3 build-ninja-cat.py`) |
+| `icon/make-icns.sh` | SVG to `.icns` (`bash make-icns.sh in.svg out.icns`, needs `librsvg`) |
+| `icon/alt/` | Earlier designs as SVG: red-team oni variants and the neon oni |
+
+To switch designs: `bash icon/make-icns.sh icon/alt/oni-pretty.svg ~/.config/ghostty/Ghostty.icns`,
+then reload Ghostty (or reopen it).
 
 ## Shaders (`shaders/`)
 

@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#2a0309"/>
+      <stop offset="0.55" stop-color="#0a0102"/>
+      <stop offset="1" stop-color="#120206"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="50%" cy="56%" r="50%">
+      <stop offset="0" stop-color="#ff1744" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#ff1744" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a0610"/>
+      <stop offset="1" stop-color="#0a0102"/>
+    </linearGradient>
+    <linearGradient id="horn" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#2a0510"/>
+      <stop offset="1" stop-color="#5a0818"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="tile"><rect x="100" y="100" width="824" height="824" rx="185"/></clipPath>
+  </defs>
+
+  <!-- tile -->
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <g clip-path="url(#tile)">
+    <rect x="100" y="100" width="824" height="824" fill="url(#aura)"/>
+
+    <!-- claw slashes -->
+    <g fill="#ff1744" opacity="0.5" filter="url(#softglow)">
+      <path d="M690 120 L760 120 L400 930 L350 930 Z" opacity="0.55"/>
+      <path d="M790 120 L835 120 L505 930 L470 930 Z" opacity="0.4"/>
+      <path d="M590 120 L632 120 L300 930 L268 930 Z" opacity="0.4"/>
+    </g>
+
+    <!-- targeting reticle -->
+    <g fill="none" stroke="#ff1744" stroke-linecap="round" opacity="0.4">
+      <circle cx="512" cy="570" r="340" stroke-width="4" stroke-dasharray="4 14"/>
+      <path d="M512 200V255M512 885V940M142 570H197M827 570H882" stroke-width="9"/>
+    </g>
+
+    <!-- glitch bars -->
+    <g>
+      <rect x="100" y="372" width="170" height="14" fill="#2ff3ff" opacity="0.55"/>
+      <rect x="120" y="400" width="90"  height="6"  fill="#ff1744" opacity="0.8"/>
+      <rect x="780" y="618" width="150" height="14" fill="#ff1744" opacity="0.7"/>
+      <rect x="820" y="646" width="104" height="6"  fill="#2ff3ff" opacity="0.6"/>
+      <rect x="100" y="780" width="120" height="10" fill="#ff1744" opacity="0.6"/>
+    </g>
+
+    <!-- scanlines -->
+    <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="3">
+      <path d="M100 160H924M100 220H924M100 280H924M100 340H924M100 400H924M100 460H924M100 520H924M100 580H924M100 640H924M100 700H924M100 760H924M100 820H924M100 880H924"/>
+    </g>
+  </g>
+  <rect x="112" y="112" width="800" height="800" rx="173" fill="none" stroke="#ff1744" stroke-width="7" filter="url(#softglow)"/>
+
+  <!-- horns: big, swept back, jagged -->
+  <g filter="url(#glow)" fill="url(#horn)" stroke="#ff1744" stroke-width="12" stroke-linejoin="miter" stroke-miterlimit="10">
+    <path d="M404 404 C336 350 286 282 278 166 C352 218 428 272 492 346 Z"/>
+    <path d="M620 404 C688 350 738 282 746 166 C672 218 596 272 532 346 Z"/>
+  </g>
+  <g stroke="#ff1744" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.95">
+    <path d="M332 348 L394 332"/><path d="M316 302 L378 288"/><path d="M302 252 L356 242"/>
+    <path d="M692 348 L630 332"/><path d="M708 302 L646 288"/><path d="M722 252 L668 242"/>
+  </g>
+
+  <!-- chromatic aberration edges -->
+  <path transform="translate(-13,4)" fill="none" stroke="#2ff3ff" stroke-width="7" opacity="0.65" stroke-linejoin="miter"
+        d="M512 345 L410 328 L318 392 L286 500 L300 600 L340 690 L410 780 L470 840 L512 852 L554 840 L614 780 L684 690 L724 600 L738 500 L706 392 L614 328 Z"/>
+  <path transform="translate(13,-3)" fill="none" stroke="#ff4d6d" stroke-width="6" opacity="0.5" stroke-linejoin="miter"
+        d="M512 345 L410 328 L318 392 L286 500 L300 600 L340 690 L410 780 L470 840 L512 852 L554 840 L614 780 L684 690 L724 600 L738 500 L706 392 L614 328 Z"/>
+
+  <!-- face: angular, V-jaw -->
+  <g filter="url(#glow)">
+    <path d="M512 345 L410 328 L318 392 L286 500 L300 600 L340 690 L410 780 L470 840 L512 852 L554 840 L614 780 L684 690 L724 600 L738 500 L706 392 L614 328 Z"
+          fill="url(#face)" stroke="#ff1744" stroke-width="14" stroke-linejoin="miter" stroke-miterlimit="10"/>
+  </g>
+
+  <!-- forehead crack + third eye -->
+  <g filter="url(#glow)">
+    <path d="M512 372 L526 414 L512 462 L498 414 Z" fill="#2ff3ff"/>
+  </g>
+  <path d="M512 346 L500 372 M512 462 L520 490" stroke="#ff1744" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+  <!-- brows: heavy slashes -->
+  <g fill="#ff1744" filter="url(#glow)" stroke="#ff1744" stroke-width="6" stroke-linejoin="miter">
+    <path d="M296 440 L498 572 L500 524 L350 410 Z"/>
+    <path d="M728 440 L526 572 L524 524 L674 410 Z"/>
+  </g>
+
+  <!-- eyes: glowing slits -->
+  <g filter="url(#glow)">
+    <path d="M352 566 L494 588 L452 624 L376 612 Z" fill="#2ff3ff"/>
+    <path d="M672 566 L530 588 L572 624 L648 612 Z" fill="#2ff3ff"/>
+  </g>
+  <g fill="#ff1744">
+    <path d="M440 582 L452 584 L446 622 L438 620 Z"/>
+    <path d="M584 582 L572 584 L578 622 L586 620 Z"/>
+  </g>
+
+  <!-- claw scar across right cheek -->
+  <g stroke="#2ff3ff" stroke-width="8" stroke-linecap="round" fill="none" filter="url(#softglow)">
+    <path d="M650 520 L704 650"/><path d="M676 508 L728 630"/><path d="M626 536 L676 662"/>
+  </g>
+  <!-- left cheek marks -->
+  <g stroke="#ff1744" stroke-width="9" stroke-linecap="round" fill="none" filter="url(#softglow)">
+    <path d="M312 596 L364 616"/><path d="M318 636 L370 652"/>
+  </g>
+
+  <!-- nostrils -->
+  <g fill="#ff1744" filter="url(#softglow)">
+    <path d="M482 650 L506 660 L494 678 Z"/>
+    <path d="M542 650 L518 660 L530 678 Z"/>
+  </g>
+
+  <!-- mouth: wide snarl -->
+  <path d="M326 696 Q 512 770 698 696 L652 794 Q 512 860 372 794 Z" fill="#060102" stroke="#ff1744" stroke-width="11" stroke-linejoin="miter" filter="url(#softglow)"/>
+  <!-- upper fangs, jagged -->
+  <g fill="#f3f7ff" filter="url(#softglow)">
+    <path d="M356 712 L388 724 L368 778 Z"/>
+    <path d="M404 730 L440 740 L420 800 Z"/>
+    <path d="M458 744 L494 750 L478 808 Z"/>
+    <path d="M668 712 L636 724 L656 778 Z"/>
+    <path d="M620 730 L584 740 L604 800 Z"/>
+    <path d="M566 744 L530 750 L546 808 Z"/>
+  </g>
+  <!-- lower fangs -->
+  <g fill="#f3f7ff" opacity="0.95">
+    <path d="M440 826 L472 822 L458 790 Z"/>
+    <path d="M584 826 L552 822 L566 790 Z"/>
+    <path d="M497 832 L527 832 L512 796 Z"/>
+  </g>
+  <!-- blood drips from fangs -->
+  <g fill="#ff1744" filter="url(#softglow)">
+    <path d="M420 800 Q 414 830 420 846 Q 428 830 420 800 Z"/>
+    <path d="M604 800 Q 598 826 604 842 Q 612 826 604 800 Z"/>
+  </g>
+
+  <!-- tusks -->
+  <g fill="#f3f7ff" stroke="#2ff3ff" stroke-width="6" stroke-linejoin="miter" filter="url(#softglow)">
+    <path d="M368 788 C 350 746 348 702 360 652 C 396 686 414 730 416 772 Z"/>
+    <path d="M656 788 C 674 746 676 702 664 652 C 628 686 610 730 608 772 Z"/>
+  </g>
+</svg>

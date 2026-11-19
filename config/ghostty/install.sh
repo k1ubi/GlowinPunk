@@ -25,6 +25,16 @@ done
 cp "$SRC/config.ghostty" "$DEST/config.ghostty"
 cp "$SRC"/shaders/*.glsl "$DEST/shaders/"
 
+# App icon (macOS only). Ghostty reads a custom icon from ~/.config/ghostty/Ghostty.icns
+# when `macos-icon = custom`, regardless of where config.ghostty lives.
+if [ "$(uname -s)" = "Darwin" ]; then
+  ICON_DIR="$HOME/.config/ghostty"
+  mkdir -p "$ICON_DIR"
+  [ -f "$ICON_DIR/Ghostty.icns" ] && cp "$ICON_DIR/Ghostty.icns" "$ICON_DIR/Ghostty.icns.bak.$(date +%Y%m%d-%H%M%S)"
+  cp "$SRC/icon/Ghostty.icns" "$ICON_DIR/Ghostty.icns"
+  echo "Installed icon to: $ICON_DIR/Ghostty.icns"
+fi
+
 echo "Installed to: $DEST"
 echo "Reload Ghostty: Cmd+Shift+, (macOS) / Ctrl+Shift+, (Linux), or menu: Ghostty -> Reload Configuration."
 echo "Open a NEW tab afterwards so the underscore cursor (shell integration) applies."
