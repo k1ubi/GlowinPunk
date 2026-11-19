@@ -142,6 +142,17 @@ One GNOME-level conflict had to be cleared for this to work: `Super+D` was
 already bound globally to `show-desktop`. That binding now only fires as
 `Ctrl+Super+D` or `Ctrl+Alt+D` — plain `Super+D` was freed for tmux.
 
+## 👻 Terminal: Ghostty (macOS / Linux)
+
+A Ghostty variant of the same neon look lives in `config/ghostty/`: the same
+dark-navy + neon palette checked for WCAG contrast, a blinking underscore
+cursor with a glide trail, a lime-green window border, and a subtle bloom
+glow, all as small GLSL shaders. Install with
+`bash config/ghostty/install.sh`; details in
+[`config/ghostty/README.md`](config/ghostty/README.md). It's independent of
+the GNOME scripts below, so `apply_script.sh` / `restore_script.sh` don't
+touch it.
+
 ## 📦 Install
 
 This repo isn't a one-shot installer — it's the reference config plus a full

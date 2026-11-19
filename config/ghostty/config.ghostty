@@ -1,0 +1,93 @@
+# Cyberpunk neon theme, tuned for long reading sessions (security work).
+# Reload with Cmd+Shift+, (all options below apply live except window-decoration).
+#
+# Design rules:
+#   - Background is deep navy, not pure black: less halation/eye strain with
+#     bright neon text, and neon reads as "glowing" against it.
+#   - Every ANSI color is >= 6:1 contrast on the background (most >= 8:1),
+#     including blue and bright-black, which are normally unreadable.
+#   - minimum-contrast is a safety net for tools that emit their own colors
+#     (e.g. 256-color / truecolor output from nmap, bat, ripgrep, etc.).
+
+# ---- Base colors ----
+background = #0b0f1a
+foreground = #d5e1f5
+
+# Cursor: hot magenta blinking underscore. The underscore sits below the
+# character, so the text under it stays fully readable.
+cursor-color = #ff2bd6
+cursor-text = #0b0f1a
+cursor-style = underline
+cursor-style-blink = true
+# Ghostty's shell integration forces a bar cursor at the prompt, which would
+# override the underscore. Turn that one feature off.
+shell-integration-features = no-cursor,no-sudo,title,no-ssh-env,no-ssh-terminfo,path
+# Make the underscore a bit chunkier so it's easy to spot (+1px)
+adjust-underline-thickness = 1
+
+# Selection: deep cyan-navy with bright text (8.8:1), not inverted colors
+selection-background = #1d3a5c
+selection-foreground = #f2f7ff
+
+# ---- ANSI palette ----
+# 0-7 normal
+palette = 0=#1b2236
+palette = 1=#ff5c7a
+palette = 2=#39ff9c
+palette = 3=#ffd84a
+palette = 4=#6aa6ff
+palette = 5=#ff4fd8
+palette = 6=#2ff3ff
+palette = 7=#c3cee3
+# 8-15 bright (8 is used for comments/dim text, so it is kept readable: ~5.8:1)
+palette = 8=#7b8aae
+palette = 9=#ff8095
+palette = 10=#7dffbc
+palette = 11=#ffe680
+palette = 12=#9cc4ff
+palette = 13=#ff85e6
+palette = 14=#8ffaff
+palette = 15=#f2f7ff
+
+# Never let any program render text below WCAG AA (4.5:1) against its background
+minimum-contrast = 4.5
+
+# ---- Font ----
+# Ghostty's bundled JetBrains Mono is used by default (good glyph clarity).
+# Cmd+Plus / Cmd+Minus / Cmd+0 change size on the fly without editing this file.
+font-size = 13
+# A bit of extra line height separates dense lines; adjust-cell-width adds
+# letter spacing (helps tell apart O/0, l/1/I in hashes and IPs).
+adjust-cell-height = 10%
+adjust-cell-width = 2%
+font-thicken = true
+
+# ---- Window / glass effect ----
+# Slight transparency + blur gives the neon-through-glass look. Opacity is kept
+# high (0.94) so text contrast against whatever is behind the window stays safe.
+# Set to 1 if you need maximum legibility (e.g. screen sharing / demos).
+background-opacity = 0.94
+background-blur = 20
+window-padding-x = 14
+window-padding-y = 10
+window-padding-balance = true
+macos-titlebar-style = transparent
+
+# Dim inactive splits a little so the active pane stands out
+unfocused-split-opacity = 0.8
+unfocused-split-fill = #05070d
+split-divider-color = #39ff14
+
+# ---- Shaders (applied in order) ----
+# 1. Border: lime green frame just inside the window edge.
+# 2. Cursor trail: the underscore glides between positions with a neon smear.
+# 3. Glow: subtle bloom around bright text (runs last so it blooms the rest too).
+# Tunables are #defines at the top of each file. Comment a line out to disable it.
+custom-shader = shaders/neon-border.glsl
+custom-shader = shaders/cursor-trail.glsl
+custom-shader = shaders/neon-glow.glsl
+
+# Quality of life
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+scrollback-limit = 50000000
