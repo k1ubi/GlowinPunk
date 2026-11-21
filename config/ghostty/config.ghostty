@@ -21,7 +21,19 @@ cursor-style = underline
 cursor-style-blink = true
 # Ghostty's shell integration forces a bar cursor at the prompt, which would
 # override the underscore. Turn that one feature off.
-shell-integration-features = no-cursor,no-sudo,title,no-ssh-env,no-ssh-terminfo,path
+# ssh-env fixes typing that overwrites characters over SSH: most remote hosts
+# don't know TERM=xterm-ghostty, so it's swapped for xterm-256color when you
+# ssh (and COLORTERM is passed along). ssh-terminfo stays OFF on purpose: it
+# installs a terminfo file on the remote host, which you don't want on
+# systems you're assessing.
+shell-integration-features = no-cursor,no-sudo,title,ssh-env,no-ssh-terminfo,path
+# The ssh-env wrapper only catches a literal `ssh` typed in an integrated shell.
+# It misses proxychains/sudo/sshpass/autossh ssh, aliases, scripts and tmux, which
+# would still send TERM=xterm-ghostty and break line editing on remote hosts.
+# Advertising the universal xterm-256color everywhere avoids that. Trade-off: a
+# few Ghostty-specific niceties (e.g. curly underlines in vim) are not advertised.
+# Remove this line to go back to xterm-ghostty.
+term = xterm-256color
 # Make the underscore a bit chunkier so it's easy to spot (+1px)
 adjust-underline-thickness = 1
 

@@ -31,6 +31,10 @@ Existing configs are backed up first. Reload with `Cmd+Shift+,` (macOS) or
   feature is disabled, otherwise Ghostty forces a bar cursor at the prompt.
 - **Text:** JetBrains Mono (Ghostty's bundled default), 13pt, slight extra
   line height and letter spacing to tell `O/0` and `l/1/I` apart.
+- **SSH:** `term = xterm-256color` and `ssh-env` avoid typing that overwrites
+  characters on remote hosts that lack the `xterm-ghostty` terminfo. `ssh-terminfo`
+  stays off so nothing is installed on systems you assess. Delete the `term` line
+  to go back to `xterm-ghostty`.
 - **Icon:** custom ninja-cat app icon (see below).
 - **Glass:** 0.94 background opacity + blur. Set `background-opacity = 1` for
   screen sharing.
@@ -61,7 +65,7 @@ line out of `config.ghostty` to disable one.
 
 | File | Effect |
 |---|---|
-| `neon-border.glsl` | Lime-green frame just inside the window edge (`#39ff14`) |
+| `neon-border.glsl` | Thin 1px lime-green frame with a faint glow just inside the window edge (`#39ff14`) |
 | `cursor-trail.glsl` | Underscore cursor glides between positions with a neon smear |
 | `neon-glow.glsl` | Subtle bloom around bright text and the cursor |
 
