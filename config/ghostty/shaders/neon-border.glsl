@@ -9,9 +9,9 @@
 #define BORDER_COLOR vec3(0.224, 1.0, 0.078)   // #39ff14 lime/electric green
 #define LINE_WIDTH 1.0       // crisp core line thickness (1px; 2.0 = the old, thicker line)
 #define LINE_INSET 1.0       // gap from the very edge (keeps it clear of rounded-corner clipping)
-#define GLOW_WIDTH 5.0       // how far the soft inner glow reaches (was 12, originally 18)
+#define GLOW_WIDTH 3.0       // how far the soft inner glow reaches (was 12, originally 18)
 #define LINE_STRENGTH 1.0    // brightness of the line (full, so the thin line stays vivid)
-#define GLOW_STRENGTH 0.12   // brightness of the soft glow
+#define GLOW_STRENGTH 0.10   // brightness of the soft glow
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = fragCoord / iResolution.xy;

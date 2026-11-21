@@ -65,7 +65,7 @@ line out of `config.ghostty` to disable one.
 
 | File | Effect |
 |---|---|
-| `neon-border.glsl` | Thin 1px lime-green frame with a faint glow just inside the window edge (`#39ff14`) |
+| `neon-border.glsl` | Thin 1px lime-green frame with a barely-there glow just inside the window edge (`#39ff14`) |
 | `cursor-trail.glsl` | Underscore cursor glides between positions with a neon smear |
 | `neon-glow.glsl` | Subtle bloom around bright text and the cursor |
 

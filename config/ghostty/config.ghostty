@@ -96,10 +96,11 @@ macos-titlebar-style = transparent
 # macos-icon-screen-color = #05070d,#0b1a2e
 macos-icon = custom
 
-# Dim inactive splits a little so the active pane stands out
+# Dim inactive splits a little so the active pane stands out. Ghostty has no
+# divider-width option, so the divider is a darker lime to look thinner.
 unfocused-split-opacity = 0.8
 unfocused-split-fill = #05070d
-split-divider-color = #39ff14
+split-divider-color = #1f7a10
 
 # ---- Shaders (applied in order) ----
 # 1. Border: lime green frame just inside the window edge.
