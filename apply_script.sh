@@ -9,7 +9,6 @@ gsettings set org.gnome.desktop.interface gtk-theme         'Yaru-magenta-dark'
 gsettings set org.gnome.desktop.interface icon-theme        'Yaru-nvidia-dark'
 gsettings set org.gnome.desktop.interface cursor-theme      'Cyberpunk-Neon'
 gsettings set org.gnome.desktop.interface color-scheme      'prefer-dark'
-gsettings set org.gnome.desktop.interface font-name         'JetBrainsMono Nerd Font Mono 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrainsMono Nerd Font Mono 11'
 gsettings set org.gnome.shell.extensions.user-theme name    'NV-Yaru'
 gsettings set org.gnome.shell disable-user-extensions       false
