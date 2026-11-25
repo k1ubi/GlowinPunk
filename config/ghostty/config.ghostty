@@ -79,7 +79,7 @@ font-thicken = true
 # high (0.94) so text contrast against whatever is behind the window stays safe.
 # Set to 1 if you need maximum legibility (e.g. screen sharing / demos).
 background-opacity = 0.94
-background-blur = 20
+background-blur = false
 window-padding-x = 14
 window-padding-y = 10
 window-padding-balance = true
@@ -107,11 +107,31 @@ split-divider-color = #1f7a10
 # 2. Cursor trail: the underscore glides between positions with a neon smear.
 # 3. Glow: subtle bloom around bright text (runs last so it blooms the rest too).
 # Tunables are #defines at the top of each file. Comment a line out to disable it.
-custom-shader = shaders/neon-border.glsl
-custom-shader = shaders/cursor-trail.glsl
-custom-shader = shaders/neon-glow.glsl
+# custom-shader = shaders/neon-border.glsl
+# custom-shader = shaders/cursor-trail.glsl
+# custom-shader = shaders/neon-glow.glsl
 
 # Quality of life
 mouse-hide-while-typing = true
 copy-on-select = clipboard
 scrollback-limit = 50000000
+
+# ---- Keybindings (Win = Super, mirrors macOS Cmd layout) ----
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+w=close_surface
+keybind = super+bracket_right=goto_split:next
+keybind = super+bracket_left=goto_split:previous
+keybind = super+ctrl+up=resize_split:up,10
+keybind = super+ctrl+down=resize_split:down,10
+keybind = super+ctrl+left=resize_split:left,10
+keybind = super+ctrl+right=resize_split:right,10
+keybind = super+ctrl+equal=equalize_splits
+keybind = super+shift+enter=toggle_split_zoom
+keybind = super+equal=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+keybind = super+zero=reset_font_size
+keybind = super+t=new_tab
+keybind = super+shift+bracket_right=next_tab
+keybind = super+shift+bracket_left=previous_tab
+keybind = super+shift+comma=reload_config
